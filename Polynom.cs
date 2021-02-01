@@ -72,5 +72,15 @@ namespace MathGruppenAufgaben
 
             return new Polynom(newPol);
         }
+
+        public static Polynom operator *(Polynom polA, Polynom polB)
+        {
+            return Mul(polA, polB);
+        }
+
+        public static Polynom operator +(Polynom polA, Polynom polB)
+        {
+            return Add(polA, polB);
+        }
     }
 }

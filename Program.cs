@@ -41,7 +41,7 @@ namespace MathGruppenAufgaben
                     polB = new Polynom(Array.ConvertAll(args[2].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
                                             float.Parse));
 
-                    polR = Polynom.Add(polA, polB);
+                    polR = polA + polB;
 
                     Console.WriteLine("Result: '" + string.Join(",", polR.GetCoeffs()));
                     Console.WriteLine("Eval: " + polR.Eval(float.Parse(args[3])));
@@ -52,7 +52,7 @@ namespace MathGruppenAufgaben
                     polB = new Polynom(Array.ConvertAll(args[2].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
                                             float.Parse));
 
-                    polR = Polynom.Mul(polA, polB);
+                    polR = polA * polB;
 
                     Console.WriteLine("Result: '" + string.Join(",", polR.GetCoeffs()));
                     Console.WriteLine("Eval: " + polR.Eval(float.Parse(args[3])));
