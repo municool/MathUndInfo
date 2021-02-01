@@ -12,9 +12,9 @@ namespace MathGruppenAufgaben
                 Console.WriteLine("-pi");
                 Console.WriteLine("-asso");
                 Console.WriteLine("-null");
-                Console.WriteLine("-poAdd [PolynomA] [PolynomB]");
+                Console.WriteLine("-poAdd [PolynomA] [PolynomB] [x]");
                 Console.WriteLine("--> Polynom muss ein string mit Kommageteilten zahlen bsp. '1,2,0,4,0,2'");
-                Console.WriteLine("-poMul [PolynomA] [PolynomB]");
+                Console.WriteLine("-poMul [PolynomA] [PolynomB] [x]");
                 Console.WriteLine("--> Polynom muss ein string mit Kommageteilten zahlen bsp. '1,2,0,4,0,2'");
                 return;
             }
@@ -27,24 +27,35 @@ namespace MathGruppenAufgaben
             switch (args[0])
             {
                 case "-pi":
-                    Console.WriteLine("\n----------------Pi--------------------------\n");
                     mathAndInfoI.Pi();
                     break;
                 case "-asso":
-                    Console.WriteLine("----------------Assoziativ------------------\n");
                     mathAndInfoI.Assoziativ();
                     break;
                 case "-null":
-                    Console.WriteLine("\n----------------Null------------------------\n");
                     mathAndInfoI.Null();
                     break;
                 case "-poAdd":
+                    polA = new Polynom(Array.ConvertAll(args[1].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
+                                            float.Parse));
+                    polB = new Polynom(Array.ConvertAll(args[2].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
+                                            float.Parse));
+
                     polR = Polynom.Add(polA, polB);
-                    Console.WriteLine("Eval: " + polR.Eval(1f));
+
+                    Console.WriteLine("Result: '" + string.Join(",", polR.GetCoeffs()));
+                    Console.WriteLine("Eval: " + polR.Eval(float.Parse(args[3])));
                     break;
                 case "-poMul":
+                    polA = new Polynom(Array.ConvertAll(args[1].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
+                                            float.Parse));
+                    polB = new Polynom(Array.ConvertAll(args[2].Split(new[] { ',', }, StringSplitOptions.RemoveEmptyEntries),
+                                            float.Parse));
+
                     polR = Polynom.Mul(polA, polB);
-                    Console.WriteLine("Eval: " + polR.Eval(1f));
+
+                    Console.WriteLine("Result: '" + string.Join(",", polR.GetCoeffs()));
+                    Console.WriteLine("Eval: " + polR.Eval(float.Parse(args[3])));
                     break;
                 default:
                     Console.BackgroundColor = ConsoleColor.Red;
@@ -53,7 +64,6 @@ namespace MathGruppenAufgaben
                     Console.ResetColor();
                     break;
             }
-            Console.Read();
         }
 
     }

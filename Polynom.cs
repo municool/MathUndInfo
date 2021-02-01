@@ -36,14 +36,9 @@ namespace MathGruppenAufgaben
             return Coeffs.Length;
         }
 
-        public float GetCoeff(int degree)
+        public float[] GetCoeffs()
         {
-            return Coeffs[degree];
-        }
-
-        public void SetCoeff(int degree, float value)
-        {
-            Coeffs[degree] = value;
+            return Coeffs;
         }
 
         public static Polynom Add(Polynom polA, Polynom polB)
